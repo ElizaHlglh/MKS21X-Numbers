@@ -4,8 +4,9 @@ public class RationalNumber extends RealNumber{
 
   public RationalNumber(int nume, int deno){
     super(0);//this value is ignored!
-    numerator = nume;
-    denominator = deno;
+    int factor = gcd(nume, deno);
+    numerator = nume/factor;
+    denominator = deno/factor;
   }
 
   public double getValue(){
@@ -68,8 +69,8 @@ public class RationalNumber extends RealNumber{
 */
   private void reduce(){
     int factor = gcd(numerator, denominator);
-    numerator = numerator/factor;
-    denominator = denominator/factor;
+    this.numerator = numerator/factor;
+    this.denominator = denominator/factor;
   }
 
 
