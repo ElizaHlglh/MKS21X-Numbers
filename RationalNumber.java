@@ -4,9 +4,9 @@ public class RationalNumber extends RealNumber{
 
   public RationalNumber(int nume, int deno){
     super(0);//this value is ignored!
-    int factor = gcd(nume, deno);
-    numerator = nume/factor;
-    denominator = deno/factor;
+    numerator = nume;
+    denominator = deno;
+    reduce();
   }
 
   public double getValue(){
@@ -39,7 +39,15 @@ public class RationalNumber extends RealNumber{
 *@return the value expressed as "3/4" or "8/3"
 */
   public String toString(){
-    return numerator + "/" + denominator;
+    if (numerator == 0) {
+      return "0";
+    }
+    else if (denominator == 1) {
+      return "" + numerator;
+    }
+    else {
+      return "" + numerator + "/" + denominator;
+    }
   }
 
 
