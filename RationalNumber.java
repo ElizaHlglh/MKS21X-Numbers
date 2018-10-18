@@ -10,7 +10,7 @@ public class RationalNumber extends RealNumber{
   }
 
   public double getValue(){
-    return numerator/denominator;
+    return numerator / denominator;
   }
 
   public int getNumerator(){
@@ -60,7 +60,7 @@ public class RationalNumber extends RealNumber{
   private static int gcd(int a, int b){
  /*use euclids method or a better one*/
   int factor = 1;
-  for (int i = 1; i <= a && i <= b; i++){
+  for (int i = 1; i <= Math.abs(a) && i <= Math.abs(b); i++){
     if (a % i == 0 && b % i == 0){
       factor = i;
     }
@@ -77,8 +77,18 @@ public class RationalNumber extends RealNumber{
 */
   private void reduce(){
     int factor = gcd(numerator, denominator);
-    this.numerator = numerator/factor;
-    this.denominator = denominator/factor;
+    if (numerator > 0 && denominator < 0) {
+      numerator = (numerator * -1)/factor;
+      denominator = Math.abs(denominator)/factor;
+    }
+    else if (numerator < 0 && denominator < 0) {
+      numerator = Math.abs(numerator)/factor;
+      denominator = Math.abs(denominator)/factor;
+    }
+    else {
+      numerator = numerator/factor;
+      denominator = denominator/factor;
+    }
   }
 
 
